@@ -1,6 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-* [First Chapter](chapter1.md)
-* [Kotlin for Android](kotlin-for-android.md)
+* [配置as](chapter1.md)
+* [android开发](kotlin-for-android.md)
 

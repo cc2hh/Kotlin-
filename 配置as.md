@@ -6,8 +6,6 @@
 
 无需再安装Kotlin插件
 
-
-
 在app的build.gradle里顶部
 
 ```
@@ -20,11 +18,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
         ...
-        
+
 dependencies {
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
-
 ```
 
 在project的build.gradle里
@@ -33,7 +30,7 @@ dependencies {
 buildscript {
 
     ext.kotlin_version = '1.1.51'
-    
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"

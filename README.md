@@ -1,3 +1,4 @@
-# My Awesome Book
+# Kotlin学习笔记
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+记录下学习痕迹，遗忘知识点
+

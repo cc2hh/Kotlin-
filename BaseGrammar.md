@@ -1,4 +1,60 @@
 ## 基本语法
 
+* #### 包
+
+同Java类似，也用关键字 **package **，位于源文件顶部
+
+```
+package com.example.kotlin
+```
+
+* #### 函数
+
+使用关键字**fun**，同java的int不同，使用Int
+
+```
+// 无返回值函数，Unit可以省略
+fun test(name: String, age: Int):Unit {
+    }
+    
+// 有返回值函数
+fun test(name: String, age: Int):Boolean {
+        return 1<2
+    }
+// 另一种形式，Boolean声明可以省略
+ fun test(name: String, age: Int): Boolean = 1 < 2
+```
+
+* #### 变量
+
+使用关键字**val**（只读）和**var**（可变），处于源文件不同位置，分为顶层变量和局部变量，同java的全局和局部对应
+
+定义变量时就赋值可省略类型声明，顶层和局部都适用
+
+```
+    //    val ageL: Int = 0
+    //    var ageR: Int = 0
+    val ageL = 0
+    var ageR = 0
+```
+
+顶层变量的赋值情况：
+
+1. 在定义时就赋值
+2. 使用关键字**lateinit**声明延迟赋值
+3. 定义时不赋值，在**init{}**函数中赋值
+
+* #### 注释
+
+同java一样，其中段注释可以嵌套
+
+```
+// 行注释
+
+/*
+* 块注释
+*/
+```
+
 
 

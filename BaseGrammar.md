@@ -44,8 +44,6 @@ fun test(name: String, age: Int):Boolean {
 2. 使用关键字**lateinit**声明延迟赋值
 3. 定义时不赋值，在**init{}**函数中赋值
 
-
-
 * #### 注释
 
 同java一样，其中段注释可以嵌套
@@ -56,6 +54,16 @@ fun test(name: String, age: Int):Boolean {
 /*
 * 块注释
 */
+```
+
+* #### 非空性
+
+默认所有变量为非空，这样避免了java中常见的null异常。若需要可为空的变量，需在变量声明处的类型后面加“?”符号。
+
+```
+fun parseInt(str: String): Int? {
+    // ……
+}
 ```
 
 

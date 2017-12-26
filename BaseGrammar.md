@@ -44,7 +44,7 @@ fun test(name: String, age: Int):Boolean {
 2. 使用关键字**lateinit**声明延迟赋值
 3. 定义时不赋值，在**init{}**函数中赋值
 
-
+三种情况必须实现一种
 
 * #### 注释
 

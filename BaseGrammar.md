@@ -70,5 +70,28 @@ fun parseInt(str: String): Int? {
 
 * #### 类型检测和自动类型转换
 
-使用关键字**is**
+使用关键字**is**进行检测，在检测后的作用域内变量会自动转换成检测后的类型
+
+```
+ fun getStringLength(any: Any): Int {
+        if (any is String)
+            return any.length
+        else
+            return -1
+    }
+
+```
+
+* #### for循环
+
+使用关键字**for**和**in**
+
+```
+val names=
+for(item in )
+```
+
+> while 循环用法同java一样
+
+
 

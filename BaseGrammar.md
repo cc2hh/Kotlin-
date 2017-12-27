@@ -79,7 +79,14 @@ fun parseInt(str: String): Int? {
         else
             return -1
     }
-
+    
+//    fun getStringLength(any: Any): Int? {
+//
+//        return if (any is String)
+//            any.length
+//        else
+//            null
+//    }    
 ```
 
 * #### for循环
@@ -87,8 +94,12 @@ fun parseInt(str: String): Int? {
 使用关键字**for**和**in**
 
 ```
-val names=
-for(item in )
+    fun forUse() {
+        val names = arrayOf("a", "b", "c")
+        for (item in names) {
+            println("name is $item")
+        }
+    }
 ```
 
 > while 循环用法同java一样

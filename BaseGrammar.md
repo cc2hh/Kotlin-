@@ -48,7 +48,7 @@ fun test(name: String, age: Int):Boolean {
 
 * #### 注释
 
-同java一样，其中段注释可以嵌套
+同java一样，其中块注释可以嵌套
 
 ```
 // 行注释
@@ -79,14 +79,14 @@ fun parseInt(str: String): Int? {
         else
             return -1
     }
-    
+
 //    fun getStringLength(any: Any): Int? {
 //
 //        return if (any is String)
 //            any.length
 //        else
 //            null
-//    }    
+//    }
 ```
 
 * #### for循环

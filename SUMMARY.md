@@ -4,5 +4,6 @@
 * [配置as](chapter1.md)
 * [android开发](kotlin-for-android.md)
 * [基础语法](BaseGrammar.md)
-* [基础](ji-chu.md)
+* [基本类型](ji-chu.md)
+* [包](bao.md)
 

@@ -1,5 +1,3 @@
-# 基本类型
-
 使用的基本类型有：数字，字符，布尔，数组和字符串
 
 * ## 数字
@@ -76,8 +74,6 @@ Byte                 8
 
 > 运算符会有重载做适当转换 val a = 1L+3
 
-
-
 浮点数的一个注意点，逻辑运算符的变量为非静态浮点数时，运算符为浮点数实现不符合标准的equals与compareTo，会导致：
 
 * 认为NaN与其自身相等
@@ -116,8 +112,6 @@ testEquals:false
     // 输出
     Expected :java.lang.Character<1> 
     Actual   :java.lang.Integer<1>
-    
-    
 ```
 
 * ## 布尔
@@ -184,8 +178,6 @@ val arrInt: IntArray = intArrayOf(1, 2, 3)
 用关键字**String**表示，是不可变的。可用**\[\]**获取其元素。有2种类型的字面值：转义字符串和原生字符串。通过trimMargin\(\)函数去除前导字符
 
 ```
-
-  
     @Test
     fun testString() {
         // 转义字符串
@@ -226,11 +218,7 @@ how old are you
     !!? please
 ```
 
-
-
 > 基础类型使用可空引用时，会被装箱
-
-
 
 
 

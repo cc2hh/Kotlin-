@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+
         ...
 }
 
@@ -67,8 +67,6 @@ import com.example.kotlin.pojo.Person
 * 顶层函数和属性
 * 对象声明中的函数和属性
 * 枚举常量
-
-
 
 文件TestFun.kt
 
@@ -141,9 +139,7 @@ class Person {
 }
 ```
 
-
-
-> 没有import static，所有导入都用import
+> 没有import static（object对象声明类似），所有导入都用import
 
 
 

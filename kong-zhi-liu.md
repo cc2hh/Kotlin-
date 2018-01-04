@@ -23,9 +23,9 @@
             b
         }
     }
-    
+
     // 输出
-    success 
+    success
 ```
 
 * #### while
@@ -62,19 +62,16 @@
 ```
     @Test
     fun testArray() {
-//        val array = arrayOf(1, 2, 3)
-        val array: Array<Int?> = arrayOfNulls<Int>(5)
-
+    
+        val array = arrayOf(1, 2, 3)
         for ((index, item) in array.withIndex()) {
             println("$index->$item")
         }
     }
 // 输出
-0->null
-1->null
-2->null
-3->null
-4->null
+0->1
+1->2
+2->3
 ```
 
 * #### when
@@ -88,7 +85,6 @@
 作表达式时必须覆盖所有情况，不能枚举所有情况时用**else**
 
 ```
-
     @Test
     fun testWhen() {
 

@@ -32,6 +32,12 @@
 
 同java一致
 
+```
+do {
+  val y = retrieveData()
+} while (y != null) // y 在此处可见
+```
+
 * #### for
 
 类似java中的**foreach**，可以遍历提供迭代器的所有对象：
@@ -62,7 +68,7 @@
 ```
     @Test
     fun testArray() {
-    
+
         val array = arrayOf(1, 2, 3)
         for ((index, item) in array.withIndex()) {
             println("$index->$item")

@@ -8,4 +8,6 @@
 * [包](bao.md)
 * [控制流](kong-zhi-liu.md)
 * [返回和跳转](fan-hui-he-tiao-zhuan.md)
+* [类](lei.md)
+* [继承](ji-cheng.md)
 

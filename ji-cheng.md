@@ -1,4 +1,4 @@
-kotlin中所有类都有一个超类**Any**
+kotlin中所有类都有一个基类**Any**，一个类只能继承一个基类
 
 ```
 Any并不是java中的Object，只有equals()、hashCode()和toString()函数
@@ -53,8 +53,6 @@ constructor(age:Int):super()
 constructor(name:String):this(1)
 }
 ```
-
-
 
 
 

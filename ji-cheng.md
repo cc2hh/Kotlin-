@@ -1,3 +1,5 @@
+* ### 继承
+
 kotlin中所有类都有一个基类**Any**，一个类只能继承一个基类
 
 ```
@@ -51,6 +53,40 @@ class Dog: Animal {
 constructor(age:Int):super()
 // this间接实现
 constructor(name:String):this(1)
+}
+```
+
+* ### 抽象类
+
+类和成员都可以声明为抽象的，用关键字**abstract**声明，抽象成员不能实现
+
+可以用抽象成员覆盖一个非抽象开放成员
+
+```
+open class Animal() {
+
+    open val color: Int = 0
+
+    constructor(age: Int) : this()
+
+    open fun eat() {
+        println("Animal---------eat")
+    }
+
+    open fun speak() {
+        println("Animal--------speak")
+    }
+}
+
+
+abstract class Cat : Animal() {
+
+    override fun speak() {
+    }
+
+    fun run() {}
+
+    abstract override fun eat()
 }
 ```
 

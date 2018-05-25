@@ -12,7 +12,7 @@
 apply plugin: 'kotlin-android'
 ```
 
-若需使用android扩展
+若需使用android扩展，是一个编译器扩展， 摆脱代码中的`findViewById()`调用
 
 ```
 apply plugin: 'kotlin-android-extensions'

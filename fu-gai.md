@@ -1,6 +1,7 @@
 * 与**java**不同，被覆盖方法和属性也需要用**open**显式声明，并且只有基类才能声明，覆盖方法用**override**声明
 
 * 在基类中没有显示声明的函数，不能在子类中覆盖
+
 * 覆盖的成员本身是**open**的，若需要修改为不可被覆盖则需要添加**final**修饰该成员
 
 > val 可被覆盖为var，反之则不可以
@@ -15,7 +16,7 @@ open class Animal(){
 
      // 可被覆盖方法
      open fun eat(){}
-     
+
      // 可被覆盖方法
      open fun speak(){}
 
@@ -49,7 +50,7 @@ class BlackDog:Dog(1){
     override fun eat() {
         super.eat()
     }
-    
+
     // 不能覆盖speak方法，已被修改为
 }
 ```

@@ -76,5 +76,59 @@ class BlackDog() : Dog(1) {
 ------sex------0
 ```
 
+### 编译器常量
+
+使用**const**标记为常量
+
+* 必须在顶层或在Object中
+* 不能有自定义的getter
+* 用String或原生类型初始化
+
+```
+// 顶层
+package com.example.kotlin.pojo
+
+/**
+ * Created by cc on 2018/5/24.
+ *
+ * function :
+ */
+
+const val PI:Int=1123
+
+abstract class Cat : Animal() {
+
+    override fun speak() {
+    }
+
+    fun run() {}
+
+    abstract override fun eat()
+}
+
+// Object
+package com.example.kotlin.pojo
+
+/**
+ * Created by cc on 2018/5/29.
+ *
+ * function :
+ */
+object Obj {
+    const val PI:Int=1123
+}
+```
+
+### 延迟初始化
+
+用**lateinit**标记延迟，非空属性不再必须在构造函数中初始化了
+
+* 只用于非空属性
+* 非原生类型（String可以）
+
+> 如果在没有初始化时使用一个延迟属性，会报一个特定异常UninitializedPropertyAccessException
+
+可通过在延迟属性的引用上使用**.isInitialized**方法检测该属性是否已初始化了
+
 
 

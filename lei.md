@@ -5,7 +5,6 @@
 > 类中代码执行顺序：主构 -&gt; 类中属性初始化和init代码块（两者按类中顺序执行） -&gt; 次构
 
 ```
-
 // constructor可省略
 class One constructor(name: String) {
 
@@ -59,7 +58,42 @@ first init name=kk
 second 属性 name=kk sex=男
 second init name=kk age=1
 次构 constructor name=kk age=30
+```
 
+
+
+### 抽象类
+
+类和成员都可以声明为抽象的，用关键字**abstract**声明，抽象成员不能实现
+
+可以用抽象成员覆盖一个非抽象开放成员
+
+```
+open class Animal() {
+
+    open val color: Int = 0
+
+    constructor(age: Int) : this()
+
+    open fun eat() {
+        println("Animal---------eat")
+    }
+
+    open fun speak() {
+        println("Animal--------speak")
+    }
+}
+
+
+abstract class Cat : Animal() {
+
+    override fun speak() {
+    }
+
+    fun run() {}
+
+    abstract override fun eat()
+}
 ```
 
 

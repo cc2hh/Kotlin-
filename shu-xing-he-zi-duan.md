@@ -130,5 +130,18 @@ object Obj {
 
 可通过在延迟属性的引用上使用**.isInitialized**方法检测该属性是否已初始化了
 
+```
+    lateinit var today: String
+
+    @Test
+    fun testLateInit() {
+        today = "cc"
+        println("------lateinit------${this::today.isInitialized}")
+    }
+    
+// 输出
+------lateinit------true
+```
+
 
 

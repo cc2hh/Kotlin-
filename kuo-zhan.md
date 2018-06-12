@@ -143,8 +143,8 @@ open class B1 : B() {
         println("---------B1().callPrint(A1())---------")
         B1().callPrint(A1())
     }
-    
-    
+
+
    // 输出
 ---------B().callPrint(A())---------
 A.write
@@ -157,10 +157,7 @@ A.eat
 ---------B1().callPrint(A())---------
 B1========A.write
 ---------B1().callPrint(A1())---------
-B1========A.write 
-
-
-
+B1========A.write
 ```
 
 

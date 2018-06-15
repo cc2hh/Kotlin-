@@ -7,7 +7,7 @@
 
 特点，会为主构的所有参数自动生成：
 
-* equals\(\) / hashCode\(\) 对
+* equals\(\) 和hashCode\(\) 
 * toString\(\)
 * componentN\(\) ，按主参顺序生成
 * copy\(\)
@@ -18,7 +18,7 @@
 data class User(val name: String, val sex: Boolean) :Person(){
 
     var age: Int = 0
-    
+
     fun callName():String{
         return name
     }
@@ -50,7 +50,7 @@ open class Person {
         println("------${copy.name}-----${copy.age}---${copy.sex}--")
         println("-user.age-${user.age}---${user.equals(user1)}---user1.age----${user1.age}----")
     }
-   
+
    // 输出
 ------Person----------
 ------cc-----0---false--
@@ -61,7 +61,5 @@ open class Person {
 
 数据类可用于解构声明
 
-标准库提供了**`Pair`**和**`Triple`**`数据类`
-
-
+标准库提供了`Pair`和`Triple数据类`
 

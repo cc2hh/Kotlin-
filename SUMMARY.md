@@ -15,4 +15,7 @@
 * [接口](jie-kou.md)
 * [扩展](kuo-zhan.md)
 * [数据类](shu-ju-lei.md)
+* 密封类
+
+
 

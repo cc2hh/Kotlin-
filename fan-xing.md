@@ -55,22 +55,34 @@ interface C<in P> {
         testFX(com.example.kotlin.d623.A1())
     }
 
+    // B<Int>赋值给B<Number>
     fun testFX(b: com.example.kotlin.d623.B<Int>) {
         var vb: com.example.kotlin.d623.B<Number> = b
 
         println("b---${b.getT()}============vb----${vb.getT()}")
     }
 
-    fun testFX(b: com.example.kotlin.d623.B1<Int>) {
-        // 报错，required：B1<Number>，founed：B1<Int>
-        var vb: com.example.kotlin.d623.B1<Number> = b  
+    // C<Number>赋值给C<Float>
+    fun testFX(c: com.example.kotlin.d623.C<Number>) {
+        c.setP(1.0)
+        var vc: com.example.kotlin.d623.C<Float> = c
     }
     
+    fun testFX(b: com.example.kotlin.d623.B1<Int>) {
+    // 报错，required：B1<Number>，founed：B1<Int>
+    var vb: com.example.kotlin.d623.B1<Number> = b
+    }
+
 //输出
 b---1============vb----1
 ```
 
-> T是一个协变的类型参数
+> T是一个协变的类型参数，P是一个逆变的类型参数
+
+### 类型投影
+
+* 使用处型变：类型投影
+* 星投影
 
 
 

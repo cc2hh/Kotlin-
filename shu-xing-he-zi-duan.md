@@ -138,7 +138,7 @@ object Obj {
         today = "cc"
         println("------lateinit------${this::today.isInitialized}")
     }
-    
+
 // 输出
 ------lateinit------true
 ```

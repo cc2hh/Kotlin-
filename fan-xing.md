@@ -67,7 +67,7 @@ interface C<in P> {
         c.setP(1.0)
         var vc: com.example.kotlin.d623.C<Float> = c
     }
-    
+
     fun testFX(b: com.example.kotlin.d623.B1<Int>) {
     // 报错，required：B1<Number>，founed：B1<Int>
     var vb: com.example.kotlin.d623.B1<Number> = b
@@ -83,6 +83,78 @@ b---1============vb----1
 
 * 使用处型变：类型投影
 * 星投影
+
+类型投影：在使用时声明型变，
+
+```
+class Tom<T>(var v:T) {
+
+    fun getT():T{
+        return v
+    }
+
+    fun setT(t:T){
+        v=t
+    }
+}
+
+
+class House {
+
+    fun change( old:Tom<Any>, new:Tom<Any>){
+        new.v=old.getT()
+    }
+
+
+    fun change1( old:Tom<in Any>, new:Tom<out Any>){
+        old.v=new.v
+    }
+}
+
+    @Test
+    fun testD628(){
+    // 报错 required：Tom<Any>，founed：Tom<String>/Tom<Int>
+        House().change(Tom<String>(),Tom<Int>())
+
+        val old = Tom<Any>("a")
+        val new = Tom<Int>(1)
+        House().change1(old, new)
+
+        println("--testD628--${old.v}")
+    }
+
+    // 输出
+    --testD628---1
+```
+
+星投影：
+
+
+
+#### 泛型函数：声明时类型参数要放在函数名称之前。使用时需在函数名后指定具体类型参数
+
+```
+fun <E> setE(e: E) :Boolean{
+        return e is Int
+   }
+    
+println("----old.setE<Int>(1)---${old.setE<Int>(1)}----")
+
+// 输出
+true
+```
+
+#### 泛型约束：指定参数类型可能类型的范围
+
+约束上界：在类型参数加冒号**:**指定上界，默认值为Any?，多个上界用where语句，且多个上界中只有一个是类
+
+```
+    fun <U> setU(u: U) where U : Int,
+                             U : Comparable<Int> {
+    }
+```
+
+#### 类型擦除：泛型的类型安全检测只在编译期，运行时不会保留类型实参的任何信息
 
 
 

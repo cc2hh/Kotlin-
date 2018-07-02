@@ -102,7 +102,7 @@ println("--Obe.getO==${Obe.getO()}----")
 
 #### 伴生对象
 
-在类内部用关键字**companion**标记对象声明，名称可省略，伴生对象的成员可通过类名直接使用。如：单例模式
+在类内部用关键字**companion**标记对象声明，名称可省略（使用时用**Companion**代表），伴生对象的成员可通过类名直接使用。如：单例模式
 
 ```
 class C702 private constructor() {
@@ -123,19 +123,25 @@ class C702 private constructor() {
     val yoy = 1
 
 }
-    
+
  ---------测试--------------------------   
- 
- println("--${C702.age}----")
 
  val x = C702.Companion
  x.age
 
- C702.single()
-
+ println("--${C702.age}--${C702.single().yoy}--")
+ 
+ // 输出
+ --10--1--
 ```
 
 > 一个类只能有一个伴生对象
+
+
+
+### 差异
+
+
 
 
 

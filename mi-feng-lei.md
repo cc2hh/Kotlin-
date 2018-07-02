@@ -7,5 +7,37 @@
 
 密封类主要用于**when**表达式
 
+```
+sealed class POP {}
+
+open class Q : POP() {
+    var q: Int = 1
+}
+
+data class W(var a: Int) : POP() {
+
+}
+
+------------------------测试------------------------------------------
+
+@Test
+    fun testD615() {
+        println("----testD615-----${testSealed(W(21))}-------")
+        var p: POP = Q()
+        var v = when (p) {
+            is Q -> p.q
+            is W -> p.a
+        }
+    }
+
+    fun testSealed(pop: POP) = when (pop) {
+        is Q -> pop.q
+        is W -> pop.a
+    }
+
+// 输出
+----testD615-----21-------
+```
+
 
 

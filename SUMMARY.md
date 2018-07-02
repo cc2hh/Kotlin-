@@ -18,5 +18,6 @@
 * [密封类](mi-feng-lei.md)
 * [泛型](fan-xing.md)
 * [嵌套类](qian-tao-lei.md)
-* 枚举类
+* [枚举类](mei-ju-lei.md)
+* [对象](dui-xiang.md)
 

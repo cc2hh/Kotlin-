@@ -20,4 +20,5 @@
 * [嵌套类](qian-tao-lei.md)
 * [枚举类](mei-ju-lei.md)
 * [对象](dui-xiang.md)
+* [委托](wei-tuo.md)
 

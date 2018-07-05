@@ -33,12 +33,141 @@ class C704 {
     fun testD704() {
        println("--testD704------${ C704().getQ()}")
     }
-    
+
 // 输出
 --testD704------2
 ```
 
 #### 委托属性
+
+语法：**var**/**val**  属性名 **:** 类型 **by** 表达式
+
+适用于以下情况（不限于）：
+
+* lazy（延迟属性），只在首次访问时初始化值
+* observable（观察者属性），监听者能收到该属性的变更通知
+* map（映射），多个属性存放在一个map中
+
+by 后面的表达式即为委托，属性若是**val**修饰，表达式则必须实现getValue\(\)，**var**修饰则还必须实现setValue\(\)，因为属性的get\(\)和set\(\)会被委托给上面两个方法
+
+```
+var q703: String by B703()
+
+----------委托类--------------------
+
+class B703 {
+
+    var _v: String? = null
+
+    operator fun setValue(a703: A703, property: KProperty<*>, s: String) {
+        println("设值")
+        println("setValue 值：$s ，被委托类：$a703 ，属性名：$property")
+        _v = s
+    }
+
+    operator fun getValue(a703: A703, property: KProperty<*>): String {
+        println("获值")
+        return "getValue  值：$_v ，被委托类：$a703 ，属性名：$property"
+    }
+}
+
+-----------测试------------------------
+
+        var a703 = A703()
+
+        println(a703.q703)
+        a703.q703 = "CC"
+        println(a703.q703)
+        
+// 输出
+获值
+getValue  值：null ，被委托类：com.example.kotlin.d703.A703@14899482 ，属性名：property q703 (Kotlin reflection is not available)
+设值
+setValue 值：CC ，被委托类：com.example.kotlin.d703.A703@14899482 ，属性名：property q703 (Kotlin reflection is not available)
+获值
+getValue  值：CC ，被委托类：com.example.kotlin.d703.A703@14899482 ，属性名：property q703 (Kotlin reflection is not available)        
+```
+
+> 委托可以不用具体类
+
+```
+var qq703: String by {
+
+    }
+
+------------------需实现扩展方法-------------------------------
+
+ operator fun <R> Function<R>.setValue(a703: A703, property: KProperty<*>, s: String) {
+    println("qq703")
+}
+
+ operator fun <R> Function<R>.getValue(a703: A703, property: KProperty<*>): String {
+    return "123456"
+}
+
+-------------------测试------------------
+
+        a703.qq703="789"
+        println(a703.qq703)
+// 输出
+qq703
+123456
+```
+
+##### lazy，延迟属性
+
+只会在第一次调用get\(\)时计算并记录结果，以后调用时直接返回结果
+
+```
+
+    var w703: Int by lazy {
+        var v = 2 + 2
+        println("lazy" + v)
+        v
+    }
+    
+ -----------测试---------------
+ 
+        println("-第一次-${a703.w703}")
+        a703.w703 = 1
+        println("-第二次-${a703.w703}")
+// 输出
+lazy4
+-第一次-4
+-第二次-4
+```
+
+> 默认情况lazy是同步锁的，一个线程计算，所有线程用一个值。也可以更改模式
+>
+> ```
+> @kotlin.jvm.JvmVersion
+> public fun <T> lazy(mode: LazyThreadSafetyMode, initializer: () -> T): Lazy<T> =
+>         when (mode) {
+>             LazyThreadSafetyMode.SYNCHRONIZED -> SynchronizedLazyImpl(initializer)
+>             LazyThreadSafetyMode.PUBLICATION -> SafePublicationLazyImpl(initializer)
+>             LazyThreadSafetyMode.NONE -> UnsafeLazyImpl(initializer)
+>         }
+> ```
+
+> lazy表达式即为getValue\(\)方法，set方法无效，就算扩展了也不能更改其值。lazy&lt;out T&gt;
+>
+>     operator fun <T> Lazy<T>.setValue(a703: A703, property: KProperty<*>, s: T) {
+>     // 报错
+>     //    value=s
+>     }
+>
+>     public interface Lazy<out T> {
+>         /**
+>          * Gets the lazily initialized value of the current Lazy instance.
+>          * Once the value was initialized it must not change during the rest of lifetime of this Lazy instance.
+>          */
+>         public val value: T
+>         /**
+>          * Returns `true` if a value for this Lazy instance has been already initialized, and `false` otherwise.
+>          * Once this function has returned `true` it stays `true` for the rest of lifetime of this Lazy instance.
+>          */
+>         public fun isInitialized(): Boolean
+>     }
 
 
 

@@ -42,13 +42,20 @@ class C704 {
 
 语法：**var**/**val**  属性名 **:** 类型 **by** 表达式
 
+by 后面的表达式即为委托，属性若是**val**修饰，表达式则必须实现getValue\(\)，**var**修饰则还必须实现setValue\(\)，因为属性的get\(\)和set\(\)会被委托给上面两个方法。
+
+getValue\(\)方法有两个参数：
+
+* thisRef，被委托类，是自身类型或其超类
+* property，属性名，是类型KProperty&lt;\*&gt;或其超类型
+
+返回类型是属性类型或其子类型
+
 适用于以下情况（不限于）：
 
 * lazy（延迟属性），只在首次访问时初始化值
 * observable（观察者属性），监听者能收到该属性的变更通知
 * map（映射），多个属性存放在一个map中
-
-by 后面的表达式即为委托，属性若是**val**修饰，表达式则必须实现getValue\(\)，**var**修饰则还必须实现setValue\(\)，因为属性的get\(\)和set\(\)会被委托给上面两个方法
 
 ```
 var q703: String by B703()
@@ -167,6 +174,70 @@ lazy4
 >          */
 >         public fun isInitialized(): Boolean
 >     }
+
+##### observable，观察者属性
+
+在对象类Delegates里
+
+当给属性赋值时调用（赋值后执行），有三个参数：被赋值的**属性**，旧值，新值
+
+```
+    var e703: Boolean by Delegates.observable(true) { property, oldValue, newValue ->
+        println("observable-----$property(oldValue,newValue)=($oldValue,$newValue)")
+    }
+ 
+ ---------------测试------------------
+ 
+ a703.e703 = false
+ println("a703.e703=${a703.e703}")
+ 
+ // 输出
+ observable-----property e703 (Kotlin reflection is not available)(oldValue,newValue)=(true,false)      
+ a703.e703=false
+```
+
+表达式内固定返回 return@observable  即新值
+
+> 当想拦截一个值并去除掉是可用 vetoable（赋值前执行）
+>
+> ```
+>     var r703: Int by Delegates.vetoable(0) { property, oldValue, newValue ->
+>         println("vetoable-------$property(oldValue,newValue)=($oldValue,$newValue)")
+>         oldValue > newValue
+>     }
+>     
+>  ---------测试-----------------
+>  
+>   a703.r703 = 1 
+>   println("a703.r703=${a703.r703}")
+>   
+>   //输出
+>   vetoable-------property r703 (Kotlin reflection is not available)(oldValue,newValue)=(0,1)
+>   a703.r703=0    
+> ```
+
+##### map，映射属性
+
+常用与json解析或动态情况
+
+```
+class B705(map: Map<String, Any?>) {
+    val name :String by map
+    val old : Int by map
+}
+
+------------测试-----------------
+
+        val b705 = B705(mapOf("name" to "CC", "old" to 18))
+        println("b705.name=${b705.name}-------b705.old=${b705.old}")
+
+// 输出
+b705.name=CC-------b705.old=18
+```
+
+> Map是只读，所以委托属性只能是val，若要用var，需用MutableMap
+
+局部变量也能声明委托
 
 
 

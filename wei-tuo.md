@@ -51,6 +51,14 @@ getValue\(\)方法有两个参数：
 
 返回类型是属性类型或其子类型
 
+setValue\(\)方法比getValue\(\)还额外多一个参数：
+
+* value，赋与的值，是属性的类型或其超类
+
+当实现两个方法时都需要**operator**修饰
+
+---
+
 适用于以下情况（不限于）：
 
 * lazy（延迟属性），只在首次访问时初始化值
@@ -185,12 +193,12 @@ lazy4
     var e703: Boolean by Delegates.observable(true) { property, oldValue, newValue ->
         println("observable-----$property(oldValue,newValue)=($oldValue,$newValue)")
     }
- 
+
  ---------------测试------------------
- 
+
  a703.e703 = false
  println("a703.e703=${a703.e703}")
- 
+
  // 输出
  observable-----property e703 (Kotlin reflection is not available)(oldValue,newValue)=(true,false)      
  a703.e703=false
@@ -213,7 +221,7 @@ lazy4
 >   
 >   //输出
 >   vetoable-------property r703 (Kotlin reflection is not available)(oldValue,newValue)=(0,1)
->   a703.r703=0    
+>   a703.r703=0
 > ```
 
 ##### map，映射属性
@@ -238,6 +246,30 @@ b705.name=CC-------b705.old=18
 > Map是只读，所以委托属性只能是val，若要用var，需用MutableMap
 
 局部变量也能声明委托
+
+#### 翻译规则
+
+委托实现的实现都生成辅助属性并委托给它
+
+```
+class C {
+    var prop: Type by MyDelegate()
+}
+
+// 这段是由编译器生成的相应代码：
+class C {
+    private val prop$delegate = MyDelegate()
+    var prop: Type
+        get() = prop$delegate.getValue(this, this::prop)
+        set(value: Type) = prop$delegate.setValue(this, this::prop, value)
+}
+```
+
+> `this`引用到外部类`C`的实例而`this::prop`是`KProperty`类型的反射对象，该对象描述`prop`自身
+
+#### 提供委托
+
+
 
 
 

@@ -78,14 +78,14 @@ class B703 {
         println(a703.q703)
         a703.q703 = "CC"
         println(a703.q703)
-        
+
 // 输出
 获值
 getValue  值：null ，被委托类：com.example.kotlin.d703.A703@14899482 ，属性名：property q703 (Kotlin reflection is not available)
 设值
 setValue 值：CC ，被委托类：com.example.kotlin.d703.A703@14899482 ，属性名：property q703 (Kotlin reflection is not available)
 获值
-getValue  值：CC ，被委托类：com.example.kotlin.d703.A703@14899482 ，属性名：property q703 (Kotlin reflection is not available)        
+getValue  值：CC ，被委托类：com.example.kotlin.d703.A703@14899482 ，属性名：property q703 (Kotlin reflection is not available)
 ```
 
 > 委托可以不用具体类
@@ -119,15 +119,14 @@ qq703
 只会在第一次调用get\(\)时计算并记录结果，以后调用时直接返回结果
 
 ```
-
     var w703: Int by lazy {
         var v = 2 + 2
         println("lazy" + v)
         v
     }
-    
+
  -----------测试---------------
- 
+
         println("-第一次-${a703.w703}")
         a703.w703 = 1
         println("-第二次-${a703.w703}")
@@ -148,8 +147,8 @@ lazy4
 >             LazyThreadSafetyMode.NONE -> UnsafeLazyImpl(initializer)
 >         }
 > ```
-
-> lazy表达式即为getValue\(\)方法，set方法无效，就算扩展了也不能更改其值。lazy&lt;out T&gt;
+>
+> lazy表达式即为getValue\(\)方法，set方法无效，就算扩展了也不能更改其值。lazy&lt;out T&gt;只读的
 >
 >     operator fun <T> Lazy<T>.setValue(a703: A703, property: KProperty<*>, s: T) {
 >     // 报错

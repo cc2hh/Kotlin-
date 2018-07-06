@@ -249,7 +249,7 @@ b705.name=CC-------b705.old=18
 
 #### 翻译规则
 
-委托实现的实现都生成辅助属性并委托给它
+委托属性的实现都生成辅助属性并委托给它
 
 ```
 class C {
@@ -268,6 +268,42 @@ class C {
 > `this`引用到外部类`C`的实例而`this::prop`是`KProperty`类型的反射对象，该对象描述`prop`自身
 
 #### 提供委托
+
+定义provideDelegate操作符，可以扩展属性实现委托对象的逻辑处理。委托对象实现provideDelegate方法，则由该方法创建委托属性实例
+
+例如：在创建属性时检查属性一致性（不用在get或set）
+
+> provideDelegate方法会初始化生成的辅助属性
+>
+> ```
+> class C {
+>     var prop: Type by MyDelegate()
+> }
+>
+> // 这段代码是当“provideDelegate”功能可用时
+> // 由编译器生成的代码：
+> class C {
+>     // 调用“provideDelegate”来创建额外的“delegate”属性
+>     private val prop$delegate = MyDelegate().provideDelegate(this, this::prop)
+>     var prop: Type
+>         get() = prop$delegate.getValue(this, this::prop)
+>         set(value: Type) = prop$delegate.setValue(this, this::prop, value)
+> }
+> ```
+>
+> provideDelegate只影响辅助属性的生成
+
+#### 委托类
+
+kotlin原生支持委托模式
+
+```
+interface D706 {
+    fun getP(): String
+}
+
+
+```
 
 
 

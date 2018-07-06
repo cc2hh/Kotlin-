@@ -301,33 +301,85 @@ kotlin原生支持委托模式
 ---------接口-------------------
 
 interface D706 {
+    var name: String
+
     fun getP(): String
 }
+
+
 
 ----------委托类----------------
 
 class B706(var age: Int) : D706 {
+
+    override var name: String = "B706"
+
     override fun getP(): String {
-        return "由B706实现的getP方法+age=$age"
+        return "由${name}实现的getP方法+age=$age"
     }
 
 }
 
 ---------被委托类---------------
 
-class A706(b: B706) : D706 by b {
+class A706(var b: B706) : D706 by b {
 
+//    override var name: String = "A706"
+//
+//    override fun getP(): String {
+//        return "由${name}实现的getP方法"
+//    }
 }
 
 -----------测试------------------
 
  println("---testD706---${A706(B706(22)).getP()}")
- 
+
 // 输出
 ---testD706---由B706实现的getP方法+age=22
 ```
 
 > A706只能调用接口D706里有的方法，不能调用B706自有方法
+
+#### 覆盖委托实现的接口方法
+
+在被委托类中覆盖接口的方法后，使用时就会调用该方法而不会去调用委托类方法
+
+```
+---------被委托类---------------
+
+class A706(var b: B706) : D706 by b {
+
+//    override var name: String = "A706"
+
+    override fun getP(): String {
+        return "由${name}实现的getP方法"
+    }
+}
+
+// 输出
+---testD706---由A706实现的getP方法
+
+```
+
+> 自身的成员只在自身范围内使用
+>
+> ```
+> class A706(var b: B706) : D706 by b {
+>
+>     override var name: String = "A706"
+> //
+> //    override fun getP(): String {
+> //        return "由${name}实现的getP方法"
+> //    }
+> }
+>
+> // 输出
+> ---testD706---由B706实现的getP方法+age=22
+>
+> ```
+
+
 
 
 

@@ -178,16 +178,14 @@ t==1
 
 ```
     tailrec fun getCos(x: Double): Double = if (x == Math.cos(x)) x else getCos(Math.cos(x))
-    
+
     ---------------------测试-------------------------
-    
+
     println("cos==${D707().getCos(20.0)}")
-    
+
     // 输出
     cos==0.7390851332151607
 ```
 
-此递归最后必须调用自身，不能在try、catch、finally块中使用
-
-
+此递归最后必须调用自身，不能在try、catch、finally块中使用，只在JVM后端支持
 

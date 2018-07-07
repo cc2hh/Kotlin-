@@ -21,4 +21,5 @@
 * [枚举类](mei-ju-lei.md)
 * [对象](dui-xiang.md)
 * [委托](wei-tuo.md)
+* [函数](han-shu.md)
 

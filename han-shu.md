@@ -46,7 +46,6 @@ class C707 {
         C707().eat(sex = false, name = "CC")
         C707().eat(12, "CC", false)
         C707().eat(12, name = "CC", sex = false)
-
 ```
 
 命名参数之间使用时可以换位置，但所有的位置参数必须放在第一个命名参数之前
@@ -87,8 +86,6 @@ C707().speak(v = *arrayOf("CC", "HH", "EE"))
 
 可变参数（vararg）的命名参数需要用伸展操作符（**\***）修饰
 
-
-
 > 参数是函数类型且是最后一个参数，则可表示为lambda表达式，调用时从函数后花括号内返回参数值，
 >
 > ```
@@ -112,16 +109,15 @@ C707().speak(v = *arrayOf("CC", "HH", "EE"))
 * 参数不能是可变（vararg），不能有默认值
 
 ```
-
     infix fun run(s: Int) {
         println("$this---s=$s")
     }
-    
+
     ------------测试---------------------
-    
+
         C707() run 45
      // C707().run(45)
-     
+
      //输出
      com.example.kotlin.d707.C707@1ee0005---s=45
 ```
@@ -154,6 +150,44 @@ C707().speak(v = *arrayOf("CC", "HH", "EE"))
         }
     }
 ```
+
+#### 泛型函数
+
+函数可以有泛型参数，在函数名前用尖括号（&lt;&gt;）
+
+```
+class D707 {
+
+    fun <T> run(t: T) {
+        println("t==$t")
+    }
+}
+
+------------测试--------------
+
+        D707().run(1)
+//        D707().run<Int>(1)
+
+// 输出
+t==1
+```
+
+#### 尾递归函数
+
+用**tailrec**关键字修饰函数，用递归实现循环功能，无堆溢出风险
+
+```
+    tailrec fun getCos(x: Double): Double = if (x == Math.cos(x)) x else getCos(Math.cos(x))
+    
+    ---------------------测试-------------------------
+    
+    println("cos==${D707().getCos(20.0)}")
+    
+    // 输出
+    cos==0.7390851332151607
+```
+
+此递归最后必须调用自身，不能在try、catch、finally块中使用
 
 
 

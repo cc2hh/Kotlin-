@@ -22,4 +22,6 @@
 * [对象](dui-xiang.md)
 * [委托](wei-tuo.md)
 * [函数](han-shu.md)
+* [lambda](lambda.md)
+* [解构声明](jie-gou-sheng-ming.md)
 

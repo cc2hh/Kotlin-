@@ -66,7 +66,7 @@ for ((key, value) in map) {
         val (name1, _) = a719.run("爱新觉罗·拉克丝")
 
         println("$name1 没有速度变量")
-        
+
         // 输出
         爱新觉罗·拉克丝 没有速度变量
 ```
@@ -74,12 +74,14 @@ for ((key, value) in map) {
 在lambda中使用解构声明
 
 * 若具有Pair、Map.Entry或任何具有相应componentN类型的参数可通过括号中引入新参数来取代单个参数
+
   ```
   map.mapValues { entry -> "${entry.value}!" }
   map.mapValues { (key, value) -> "$value!" }
   ```
 
 * 多个参数和解构声明的区别
+
   ```
   { a, b, c //-> …… } // 两个参数
   { (a, b, c) //-> …… } // 一个解构对
@@ -87,13 +89,12 @@ for ((key, value) in map) {
   ```
 
 * 可以为解构的参数整体或单独指定类型
+
   ```
   map.mapValues { (_, value): Map.Entry<Int, String> -> "$value!" }
 
   map.mapValues { (_, value: String) -> "$value!" }
   ```
-
-
 
 
 

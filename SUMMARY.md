@@ -24,5 +24,5 @@
 * [函数](han-shu.md)
 * [lambda](lambda.md)
 * [解构声明](jie-gou-sheng-ming.md)
-* 集合
+* [集合](ji-he.md)
 

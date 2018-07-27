@@ -28,4 +28,5 @@
 * [区间](qu-jian.md)
 * [~类型检查与转换](lei-xing-jian-cha-yu-zhuan-huan.md)
 * [this表达式](thisbiao-da-shi.md)
+* [相等性](xiang-deng-xing.md)
 

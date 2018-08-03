@@ -29,4 +29,5 @@
 * [~类型检查与转换](lei-xing-jian-cha-yu-zhuan-huan.md)
 * [this表达式](thisbiao-da-shi.md)
 * [相等性](xiang-deng-xing.md)
+* [操作符重载](cao-zuo-fu-zhong-zai.md)
 

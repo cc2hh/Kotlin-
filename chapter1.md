@@ -20,7 +20,7 @@ apply plugin: 'kotlin-android-extensions'
         ...
 
 dependencies {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 ```
 
